@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './List.css';
-
 import Customer from './Customer/Customer';
 import CreateCustomer from './CreateCustomer/CreateCustomer';
-
 
 class List extends Component {
 
   render() {
     const {
-      customerList
+      customerList,
+      startNewCustomer,
+      selectCustomer
     } = this.props;
 
     const CustomerComponents = customerList.map( customer => (
@@ -18,6 +18,7 @@ class List extends Component {
         id={ customer.id }
         first={ customer.first }
         last={ customer.last }
+        selectCustomer ={selectCustomer}
       />
     ));
 
@@ -26,7 +27,7 @@ class List extends Component {
         {
             <div id="List__namesContainer">
               { CustomerComponents }
-              <CreateCustomer />
+              <CreateCustomer startNewCustomer={startNewCustomer}/>
             </div>
         }
       </div>
